@@ -14,12 +14,12 @@ override['travis_system_info']['commands_file'] = \
   '/var/tmp/sardonyx-system-info-commands.yml'
 
 php_aliases = {
-  '5.6' => '5.6.40',
-  '7.1' => '7.1.27',
-  '7.2' => '7.2.15'
+  '7.1' => '7.1.33',
+  '7.2' => '7.2.25',
+  '7.3' => '7.3.12'
 }
 override['travis_build_environment']['php_versions'] = php_aliases.values
-override['travis_build_environment']['php_default_version'] = php_aliases['7.2']
+override['travis_build_environment']['php_default_version'] = php_aliases['7.3']
 override['travis_build_environment']['php_aliases'] = php_aliases
 
 if node['kernel']['machine'] == 'ppc64le'
@@ -57,20 +57,21 @@ override['leiningen']['home'] = '/home/travis'
 override['leiningen']['user'] = 'travis'
 
 override['travis_build_environment']['nodejs_versions'] = %w[
-  11.0.0
-  8.12.0
+  12.13.1
+  11.15.0
 ]
-override['travis_build_environment']['nodejs_default'] = '8.12.0'
+override['travis_build_environment']['nodejs_default'] = '12.13.1'
 
 pythons = %w[
-  2.7.15
-  3.6.7
-  3.7.1
+  3.6.9
+  3.7.5
+  3.8.0
 ]
 
 # Reorder pythons so that default python2 and python3 come first
 # as this affects the ordering in $PATH.
-%w[3 2].each do |pyver|
+# remove python 2
+%w[3].each do |pyver|
   pythons.select { |p| p =~ /^#{pyver}/ }.max.tap do |py|
     pythons.unshift(pythons.delete(py))
   end
@@ -90,9 +91,9 @@ pythons.each do |full_name|
 end
 
 rubies = %w[
-  2.3.8
-  2.4.5
-  2.5.3
+  2.4.9
+  2.5.7
+  2.6.5
 ]
 
 override['travis_build_environment']['default_ruby'] = rubies.reject { |n| n =~ /jruby/ }.max
