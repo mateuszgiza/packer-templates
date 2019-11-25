@@ -62,7 +62,7 @@ override['travis_build_environment']['nodejs_versions'] = %w[
 ]
 override['travis_build_environment']['nodejs_default'] = '12.13.1'
 
-override['travis_build_environment']['system_python']['pythons'] = %w[3.8]
+override['travis_build_environment']['system_python']['pythons'] = %w[3.5]
 pythons = %w[
   3.6.9
   3.7.5
