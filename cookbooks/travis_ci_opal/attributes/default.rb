@@ -74,6 +74,7 @@ override['travis_build_environment']['pythons'] = []
 
 rubies = %w[
   2.4.9
+  2.5.3
   2.5.7
   2.6.5
 ]
