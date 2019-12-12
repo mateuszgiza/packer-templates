@@ -39,7 +39,7 @@ describe 'python environment' do
   end
 
   {
-    'python2.7' => '2.7.15',
+    'python2.7' => '2.7.17',
     'python3.6' => '3.6.9',
     'python3.7' => '3.7.5',
     'python3.8' => '3.8.0'
